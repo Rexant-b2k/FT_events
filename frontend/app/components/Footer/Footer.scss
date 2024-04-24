@@ -1,0 +1,21 @@
+@import '../../styles/mixins.scss';
+
+.footer{
+    display: flex;
+    margin-top: 82px;
+    padding-bottom: 72px;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    gap: 40px;
+
+    .text{
+        margin: 0;
+        padding: 0;
+        width: 372px;
+        @include paragraph_small();
+        color: rgb(28, 28, 28);
+        line-height: 18px;
+        text-align: left;  
+    }
+}
