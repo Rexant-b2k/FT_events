@@ -17,26 +17,11 @@
 Создание и управление событиями, программами мероприятий и спикерами. Активация пользователей и модерация заявок на события
 
 
-| роль в проекте | имя и фамилия | контакты 
-| ------ | ------ |  ------ |
-| Project Manager |  Мария Уракова  | https://t.me/uramasha
-| Product Manager | Александр Леванов  | https://t.me/Aleksandr_Levanov
-| UX/UI Designer | Елена Отт | https://t.me/lena_ott
-| UX/UI Designer | Анна Ненашева | https://t.me/AnnaNenashevaNL
-| Systems Analyst | Екатерина Васильева | https://t.me/tiramisuspb
-| Systems Analyst | Наталья Баптиданова  | https://t.me/texdecor
-| Systems Analyst | Василиса Беспалая  | https://t.me/Lisadereza
-| Business Analyst | Елена Сафонова  | https://t.me/ElenaS_SEA
-| Frontend Developer | Владислав Сердюков | https://t.me/VladisSerd
-| Backend Developer | Сергей Барышевский  | https://t.me/Rexten
-| Backend Developer | Станислав Андрющенко | https://t.me/StAndSt
-| Backend Developer | Дмитрий Печенков | https://t.me/imperatorObi1Kenobi
-
-
-## II. Документация API
-http://funtech.b2k.me/api/v1/swagger/
+## Документация API
+http://funtech.b2k.me/api/v1/swagger/  
 http://funtech.b2k.me/api/v1/redoc/
-## III. Инструкция по сборке и запуску
+
+## Инструкция по сборке и запуску (локальный DEV режим)
 ### Backend
 I. Клонирование репозитория проекта с субмодулями
 ```sh
@@ -77,7 +62,7 @@ docker compose pull
 docker compose up
 ```
 Рекомендуется настройка Workflow на базе [GitHub Actions]. Все необходимые workflow файлы в репозитории. Необходимо добавить GitHub variables & secrets перед запуском.
-## IV. Cтэк технологий 
+## Cтэк технологий 
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)]([Python])
 [![Python](https://img.shields.io/badge/-TypeScript-464646?style=flat-square&logo=TypeScript)]([Typescript])
 [![Python](https://img.shields.io/badge/-React-464646?style=flat-square&logo=React)]([React])
@@ -108,7 +93,7 @@ docker compose up
 - [Nginx] - Web-сервер и обратный прокси
 - [GitHub Actions] - Сервис для имплементации CI/CD
 
-## V. Cсылки на сторонние фреймворки, библиотеки, иконки и шрифты
+## Сторонние фреймворки, библиотеки, иконки и шрифты
 - [Vite] - Инструмент сборки
 - [Zod] - Валидатор схемы данных с поддержкой TypeScript
 - [Remix] - Remix framework для SSR
@@ -121,15 +106,31 @@ docker compose up
 - [Pytest] - Python testing framework
 - [Poppins] - Poppins font
 
+## Авторы (команда проекта)
+| роль в проекте | имя и фамилия | контакты 
+| ------ | ------ |  ------ |
+| Project Manager |  Мария Уракова  | https://t.me/uramasha
+| Product Manager | Александр Леванов  | https://t.me/Aleksandr_Levanov
+| UX/UI Designer | Елена Отт | https://t.me/lena_ott
+| UX/UI Designer | Анна Ненашева | https://t.me/AnnaNenashevaNL
+| Systems Analyst | Екатерина Васильева | https://t.me/tiramisuspb
+| Systems Analyst | Наталья Баптиданова  | https://t.me/texdecor
+| Systems Analyst | Василиса Беспалая  | https://t.me/Lisadereza
+| Business Analyst | Елена Сафонова  | https://t.me/ElenaS_SEA
+| Frontend Developer | Владислав Сердюков | https://t.me/VladisSerd
+| Backend Developer | Сергей Барышевский  | https://t.me/Rexten
+| Backend Developer | Станислав Андрющенко | https://t.me/StAndSt
+| Backend Developer | Дмитрий Печенков | https://t.me/imperatorObi1Kenobi
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE] file for details
+This project is licensed under the BSD-3 Clause License - see the [LICENSE] file for details
 
 ![Иллюстрация к проекту](http://funtech.b2k.me/assets/Illustration_Community-DXMb6J5j.png)
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-   [git-repo-url]: <https://github.com/StAndUP-ru/funtech.git>
+   [git-repo-url]: <https://github.com/Rexant-b2k/FT_events.git>
    [Django]: <https://www.djangoproject.com>
    [Python]: <https://www.python.org/>
    [Typescript]: <https://www.typescriptlang.org/>
@@ -150,5 +151,5 @@ This project is licensed under the MIT License - see the [LICENSE] file for deta
    [ReactHookForm]: <https://react-hook-form.com/>
    [Docker]: <https://www.docker.com/>
    [GitHub Actions]: <https://github.com/features/actions>
-   [LICENSE]: <https://github.com/StAndUP-ru/funtech/blob/develop/LICENSE>
+   [LICENSE]: <https://github.com/Rexant-b2k/FT_events/blob/main/LICENSE>
    [Poppins]: <https://fonts.google.com/specimen/Poppins>
