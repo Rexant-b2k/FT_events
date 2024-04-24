@@ -28,7 +28,7 @@ services:
       retries: 5
 
   frontend:
-    image: ${DOCKERHUB_USERNAME}/events_front:latest
+    image: ${DOCKER_USERNAME}/events_frontend:latest
     container_name: events_frontend
     restart: always
     command: "/bin/sh -c 'while :; do sleep 1h; done'"
@@ -36,7 +36,7 @@ services:
       - postgres
 
   backend:
-    image: ${DOCKERHUB_USERNAME}/events_backend:latest
+    image: ${DOCKER_USERNAME}/events_backend:latest
     container_name: events_backend
     restart: always
     env_file:

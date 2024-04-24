@@ -134,6 +134,7 @@ jobs:
             rm -f .env
             touch .env
             echo DEBUG=${{ vars.DEBUG }} > .env
+            echo DOKER_USERNAME=${{ vars.DOCKER_USERNAME }} >> .env
 
             echo POSTGRES_DB=${{ vars.POSTGRES_DB }} >> .env
             echo POSTGRES_USER=${{ vars.POSTGRES_USER }} >> .env
