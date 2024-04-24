@@ -31,6 +31,8 @@ services:
     image: ${DOCKER_USERNAME}/events_frontend:latest
     container_name: events_frontend
     restart: always
+    env_file:
+      - ./.env
     command: "/bin/sh -c 'while :; do sleep 1h; done'"
     depends_on:
       - postgres
