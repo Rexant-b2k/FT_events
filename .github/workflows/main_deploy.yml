@@ -130,7 +130,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd ft_events
+            cd ft_events/infra
             rm -f .env
             touch .env
             echo DEBUG=${{ vars.DEBUG }} > .env
