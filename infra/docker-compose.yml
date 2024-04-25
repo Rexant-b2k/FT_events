@@ -35,7 +35,8 @@ services:
       - ./.env
     command: "/bin/sh -c 'while :; do sleep 1h; done'"
     depends_on:
-      - postgres
+      db:
+        condition: service_healthy
 
   backend:
     image: ${DOCKER_USERNAME}/events_backend:latest
@@ -48,6 +49,7 @@ services:
       - media_value:/event_app/media/
     depends_on:
       frontend:
+        condition: service_started
       db:
         condition: service_healthy
 
