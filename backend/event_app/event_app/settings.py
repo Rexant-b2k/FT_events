@@ -18,7 +18,7 @@ CSRF_TRUSTED_ORIGINS.extend(os.getenv('CSRF_TRUSTED_ORIGINS', default='https://*
 CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ORIGIN_ALLOW_ALL', default='True').lower() == 'true'
 CORS_URLS_REGEX = os.getenv('CORS_URLS_REGEX', default='^/api/.*$')
 CORS_ALLOW_CREDENTIALS = True
-SECURE_REFERRER_POLICY = 'same-origin'
+SECURE_REFERRER_POLICY = 'unsafe-url'
 
 
 INSTALLED_APPS = [
