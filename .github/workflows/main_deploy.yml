@@ -73,7 +73,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: ${{ vars.DOCKER_USERNAME }}/events_bakend:latest
+          tags: ${{ vars.DOCKER_USERNAME }}/events_backend:latest
 
   build_frontend_and_push_to_docker_hub:
     name: Build and Push Docker image to Docker Hub
