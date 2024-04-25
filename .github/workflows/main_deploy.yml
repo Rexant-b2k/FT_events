@@ -161,7 +161,7 @@ jobs:
             echo EMAIL_USE_SSL=${{ vars.EMAIL_USE_SSL }} >> .env
             echo EMAIL_USE_TLS=${{ vars.EMAIL_USE_TLS }} >> .env
 
-            echo CSRF_TRUSTED_ORIGINS=${{ vars.CSRF_TRUSTED_ORIGINS }} >> .env
+            echo "CSRF_TRUSTED_ORIGINS=${{ vars.CSRF_TRUSTED_ORIGINS }}" >> .env
 
             echo CELERY_BROKER=${{ vars.CELERY_BROKER }} >> .env
 

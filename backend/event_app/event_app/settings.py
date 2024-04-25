@@ -17,6 +17,8 @@ CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default='http://*').spl
 CSRF_TRUSTED_ORIGINS.extend(os.getenv('CSRF_TRUSTED_ORIGINS', default='https://*').split())
 CORS_ORIGIN_ALLOW_ALL = os.getenv('CORS_ORIGIN_ALLOW_ALL', default='True').lower() == 'true'
 CORS_URLS_REGEX = os.getenv('CORS_URLS_REGEX', default='^/api/.*$')
+CORS_ALLOW_CREDENTIALS = True
+
 
 INSTALLED_APPS = [
     'adminlte3',
