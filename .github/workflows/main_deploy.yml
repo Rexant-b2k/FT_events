@@ -21,6 +21,8 @@ jobs:
           POSTGRES_DB: events_db
           POSTGRES_USER: events_user
           POSTGRES_PASSWORD: events_password
+          DB_HOST: db
+          DB_PORT: 5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -47,7 +49,7 @@ jobs:
         POSTGRES_USER: events_user
         POSTGRES_PASSWORD: events_password
         POSTGRES_DB: events_db
-        DB_HOST: 127.0.0.1
+        DB_HOST: db
         DB_PORT: 5432
       run: |
         cd backend
