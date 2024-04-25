@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://funtech.b2k.me/api/v1'
+export const BASE_URL = 'http://funtech.b2k.me/api/v1'
