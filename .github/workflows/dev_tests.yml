@@ -47,8 +47,8 @@ jobs:
         POSTGRES_USER: events_user
         POSTGRES_PASSWORD: events_password
         POSTGRES_DB: events_db
-        DB_HOST: 127.0.0.1
-        DB_PORT: 5432
+        POSTGRES_HOST: 127.0.0.1
+        POSTGRES_PORT: 5432
       run: |
         cd backend
         pytest event_app
