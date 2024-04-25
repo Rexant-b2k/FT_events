@@ -93,8 +93,8 @@ class SubeventAdmin(admin.ModelAdmin):
 class SpeakerAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'photo',
         'full_name',
+        'photo',
         'contacts',
         'company',
         'position',
