@@ -1,5 +1,7 @@
 from django.db import models
 
+from taggit.managers import TaggableManager
+
 from users.models import User
 
 
@@ -79,6 +81,7 @@ class Event(models.Model):
     description = models.TextField(
         verbose_name='Описание'
     )
+    tags = TaggableManager()
     datetime = models.DateTimeField(
         verbose_name='Дата и время начала',
         blank=True,

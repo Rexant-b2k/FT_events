@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'drf_yasg',
     'admin_reorder',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -181,3 +182,5 @@ ADMIN_REORDER = (
     'auth',
     'authtoken',
 )
+
+TAGGIT_CASE_INSENSITIVE = True

@@ -3,6 +3,9 @@ from django.core.validators import RegexValidator
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
+from taggit.serializers import (TagListSerializerField,
+                                TaggitSerializer)
+
 from events.models import Event, EventRegistration, Photo, Speaker, Subevent
 from event_app.settings import DEFAULT_FROM_EMAIL
 
@@ -53,7 +56,7 @@ class PhotoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EventSerializer(serializers.ModelSerializer):
+class EventSerializer(TaggitSerializer, serializers.ModelSerializer):
     '''
     Сериализатор для мероприятия.
     '''
@@ -64,7 +67,7 @@ class EventSerializer(serializers.ModelSerializer):
     registration_status = serializers.SerializerMethodField()
     format = serializers.SerializerMethodField()
     photos = PhotoSerializer(many=True, read_only=True)
-
+    tags = TagListSerializerField()
 
     class Meta:
         model = Event
@@ -79,17 +82,16 @@ class EventSerializer(serializers.ModelSerializer):
 
     def get_registration_status(self, obj):
         return obj.get_registration_status_display()
-    
+
     def get_event_status(self, obj):
         return obj.get_event_status_display()
-    
+
     def get_format(self, obj):
         return obj.get_format_display()
-        
 
     def get_participant_count(self, obj):
         return obj.registrations.count()
-    
+
     def get_my_participation(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:

@@ -25,6 +25,7 @@ class SubeventInline(admin.options.InlineModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         'id',
+        'tag_list',
         'title',
         'format',
         'registration_status',
@@ -33,9 +34,9 @@ class EventAdmin(admin.ModelAdmin):
     )
     list_filter = ('event_status', 'registration_status', 'format')
     search_fields = ('title__startswith',)
-    ordering = ('id',)  
+    ordering = ('id',)
     fieldsets = (
-        ('Событие', {'fields': ('title', 'event_status')}),
+        ('Событие', {'fields': ('title', 'event_status', 'tags')}),
         ('О событии', {
             'classes': ('collapse', 'wide'),
             'fields': (('organizer_name', 'organizer_contacts'),
@@ -67,6 +68,12 @@ class EventAdmin(admin.ModelAdmin):
     @admin.display(description='Зарегистрированные участники')
     def registered(self, obj):
         return obj.registrations.count()
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('tags')
+
+    def tag_list(self, obj):
+        return u", ".join(o.name for o in obj.tags.all())
 
 
 @admin.register(Subevent)
