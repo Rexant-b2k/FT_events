@@ -67,7 +67,7 @@ class EventSerializer(TaggitSerializer, serializers.ModelSerializer):
     registration_status = serializers.SerializerMethodField()
     format = serializers.SerializerMethodField()
     photos = PhotoSerializer(many=True, read_only=True)
-    tags = TagListSerializerField()
+    tags = TagListSerializerField(default=[])
 
     class Meta:
         model = Event
@@ -142,7 +142,7 @@ class EventRegistrationSerializer(serializers.ModelSerializer):
             recipient_list=[validated_data['participant'].email],
             fail_silently=False,)
         return EventRegistration.objects.create(approved=True, **validated_data) # Stub for now
-    
+
     def validate(self, attrs):
         event_id = self.context['view'].kwargs.get('event_id')
         user = self.context['request'].user
