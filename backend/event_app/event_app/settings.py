@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'drf_yasg',
     'admin_reorder',
+    'colorfield',
 ]
 
 MIDDLEWARE = [

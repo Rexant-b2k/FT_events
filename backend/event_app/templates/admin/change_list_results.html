@@ -20,6 +20,7 @@
               <th >
                   <span>{{ header.text|capfirst }}</span>
               </th>{% endfor %}
+              <th>Теги</th>
             </tr>
           </thead>
           <tbody>
@@ -29,7 +30,14 @@
               <td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td>
             </tr>
             {% endif %}
-            <tr class="{% cycle 'row1' 'row2' %}">{% for item in result %}{{ item }}{% endfor %}</tr>
+            <tr class="{% cycle 'row1' 'row2' %}">{% for item in result %}{{ item }}{% endfor %}
+              <td>
+                {% for tag in result.object.tags.all %}
+                  {{ tag.name }}
+                  {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+              </td>
+            </tr>
             {% endfor %}
           </tbody>
           <tfoot>
@@ -38,6 +46,7 @@
                 <th>
                     <span>{{ header.text|capfirst }}</span>
                 </th>{% endfor %}
+                <th>Теги</th>
               </tr>
           </tfoot>
         </table>

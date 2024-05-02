@@ -7,9 +7,9 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 
 from event_app.settings import TIME_ZONE
-from events.models import Event, EventRegistration, Speaker
+from events.models import Event, EventRegistration, Speaker, Tag
 from api.serializers import (EventSerializer, EventRegistrationSerializer,
-                             SubeventSerializer, SpeakerSerializer)
+                             SubeventSerializer, SpeakerSerializer, TagSerializer)
 from api.pagination import CustomPagination, CustomUserPagination
 
 
@@ -32,8 +32,7 @@ class EventViewSet(viewsets.ModelViewSet):
                 return Event.objects.filter(event_status='scheduled')
             elif self.request.query_params.get('status') == 'canceled':
                 return Event.objects.filter(event_status='canceled')
-        return Event.objects.all()
-            
+        return Event.objects.all()  
 
 
 class SubeventViewSet(viewsets.ModelViewSet):
@@ -54,6 +53,7 @@ class SpeakerViewSet(viewsets.ModelViewSet):
     queryset = Speaker.objects.all()
     serializer_class = SpeakerSerializer
 
+
 class EventRegistrationViewSet(viewsets.ModelViewSet):
     '''
     Представление для работы с регистрациями на мероприятие.
@@ -66,9 +66,17 @@ class EventRegistrationViewSet(viewsets.ModelViewSet):
         if self.request.user.is_admin:
             return EventRegistration.objects.filter(event_id=self.kwargs.get('event_id'))
         return EventRegistration.objects.filter(participant=self.request.user, event_id=self.kwargs.get('event_id'))
-    
+
     def perform_create(self, serializer):
         if not self.request.user.profile_full:
             raise ValidationError('Заполните все поля профиля') # custom error handling
         event = Event.objects.get(id=self.kwargs.get('event_id'))
         serializer.save(event=event, participant=self.request.user)
+
+
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Представление для просмотра тегов.
+    """
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer

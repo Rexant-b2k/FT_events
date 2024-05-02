@@ -1,4 +1,8 @@
+from django.core.validators import RegexValidator
+
 from django.db import models
+
+from colorfield.fields import ColorField
 
 from users.models import User
 
@@ -96,6 +100,10 @@ class Event(models.Model):
         User,
         blank=True,
         verbose_name='Участники'
+    )
+    tags = models.ManyToManyField(
+        'Tag',
+        verbose_name='Теги'
     )
     location_address = models.CharField(
         max_length=200,
@@ -312,3 +320,37 @@ class EventRegistration(models.Model):
 
     def __str__(self):
         return f'{self.registration_date.strftime("%d.%m.%Y %H:%M")}. {self.participant} - {self.event}.'
+
+
+class Tag(models.Model):
+    '''
+    Модель для тэга.
+    '''
+
+    name = models.CharField(
+        max_length=100,
+        unique=True,
+        verbose_name='Название тэга'
+    )
+    color = ColorField(
+        max_length=7,
+        unique=True,
+        verbose_name='Цвет тэга'
+    )
+    slug = models.SlugField(
+        max_length=200,
+        unique=True,
+        verbose_name='Адрес для страницы с тэгом',
+        validators=[RegexValidator(
+            regex=r'^[-a-zA-Z0-9_]+$',
+            message=('Слаг должен сосотоять из латинских букв,'
+                     ' цифр, тире и подчеркиваний.')
+        )]
+    )
+
+    class Meta:
+        verbose_name = 'Тэг'
+        verbose_name_plural = 'Тэги'
+
+    def __str__(self):
+        return self.name

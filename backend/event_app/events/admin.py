@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Event, EventRegistration, Photo, Speaker, Subevent
+from .models import Event, EventRegistration, Photo, Speaker, Subevent, Tag
 
 
 class EventRegistrationInline(admin.options.InlineModelAdmin):
@@ -153,3 +153,18 @@ class PhotoAdmin(admin.ModelAdmin):
     )
     list_display_links = ('image',)
     ordering = ('id',)
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'color',
+        'slug'
+    )
+    search_fields = (
+        'name',
+        'color',
+        'slug'
+    )

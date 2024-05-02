@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from events.models import Event, EventRegistration, Photo, Speaker, Subevent
+from events.models import Event, EventRegistration, Photo, Speaker, Subevent, Tag
 from event_app.settings import DEFAULT_FROM_EMAIL
 
 
@@ -65,7 +65,6 @@ class EventSerializer(serializers.ModelSerializer):
     format = serializers.SerializerMethodField()
     photos = PhotoSerializer(many=True, read_only=True)
 
-
     class Meta:
         model = Event
         exclude = ['participants']
@@ -79,17 +78,16 @@ class EventSerializer(serializers.ModelSerializer):
 
     def get_registration_status(self, obj):
         return obj.get_registration_status_display()
-    
+
     def get_event_status(self, obj):
         return obj.get_event_status_display()
-    
+
     def get_format(self, obj):
         return obj.get_format_display()
-        
 
     def get_participant_count(self, obj):
         return obj.registrations.count()
-    
+
     def get_my_participation(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -140,10 +138,19 @@ class EventRegistrationSerializer(serializers.ModelSerializer):
             recipient_list=[validated_data['participant'].email],
             fail_silently=False,)
         return EventRegistration.objects.create(approved=True, **validated_data) # Stub for now
-    
+
     def validate(self, attrs):
         event_id = self.context['view'].kwargs.get('event_id')
         user = self.context['request'].user
         if EventRegistration.objects.filter(event=event_id, participant=user).exists():
             raise serializers.ValidationError('Вы уже зарегистрированы на это событие')
         return super().validate(attrs)
+
+
+class TagSerializer(serializers.ModelSerializer):
+    '''
+    Сериализатор для тегов.
+    '''
+    class Meta:
+        model = Tag
+        fields = '__all__'
